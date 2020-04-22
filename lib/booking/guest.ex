@@ -4,7 +4,7 @@ defmodule Booking.Guest do
     schema "guests" do
         field :name, :string
         field :surname, :string
-        field :dateOfBirth, Ecto.DateTime
+        field :dateOfBirth, :utc_datetime
         has_many :reservations , Booking.Reservation
 
         timestamps()

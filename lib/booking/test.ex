@@ -2,8 +2,7 @@ defmodule Booking.Test do
     use Ecto.Schema
 
     schema "tests" do
-        field :dateOfTest, Ecto.DateTime
-        field :shit, Timex.Ecto.DateTime
+        field :dateOfTest, :utc_datetime
 
         timestamps()
     end
