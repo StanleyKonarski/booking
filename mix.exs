@@ -20,7 +20,7 @@ defmodule Booking.MixProject do
   def application do
     [
       mod: {Booking.Application, []},
-      extra_applications: [:logger, :runtime_tools, [:ecto], [:postgrex], [:timex]]
+      extra_applications: [:logger, :runtime_tools, :ecto, :postgrex]
     ]
   end
 
