@@ -1,4 +1,4 @@
-defmodule Booking.Room do 
+defmodule Booking.Room do
     use Ecto.Schema
 
     import Ecto.Changeset
@@ -9,10 +9,11 @@ defmodule Booking.Room do
         has_many :reservations , Booking.Reservation
     end
 
-    @required_fields ~w(type numberOfBeds)
+    @required_fields ~w(type numberOfBeds)a
 
-    def changeset(event, params \\ %{}) do
-        event
+    def changeset(room, params \\ %{}) do
+        room
         |> cast(params, @required_fields)
+        |> validate_required(@required_fields)
     end
-end 
+end
