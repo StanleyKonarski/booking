@@ -14,20 +14,18 @@ defmodule Booking.Guest do
 
     @required_fields ~w(name surname dateOfBirth)a
 
-    def changeset(event, params \\ %{}) do
-        event
+    def changeset(guest, params \\ %{}) do
+        guest
         |> cast(params, @required_fields)
         |> validate_required(@required_fields)
-        |> validate_change(:date, &future/2)
+        |> validate_change(:dateOfBirth, &adult/2)
     end
 
-    defp future(_, value) do
-        DateTime.compare(value, DateTime.utc_now)
+    defp adult(_,value) do
+        DateTime.diff(DateTime.utc_now, value)
         |> get_error
     end
 
-    #Returns :gt if the first datetime is later than the second and :lt for vice versa. If the two datetimes are equal :eq is returned.
-
-    defp get_error(comparison) when comparison == :lt, do: [date: "Please choose date in the future"]
+    defp get_error(subres) when subres < 568024668, do: [dateOfBirth: "You must be 18+"]
     defp get_error(_), do: []
 end

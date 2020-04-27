@@ -13,4 +13,8 @@ defmodule Booking.GuestQueries do
 
         Repo.all(query)
     end
+
+    def create(guest) do
+        Repo.insert!(guest)
+    end
 end

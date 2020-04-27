@@ -5,11 +5,12 @@ defmodule Booking.Room do
 
     schema "rooms" do
         field :type, :string
-        field :numberOfBeds, :string
+        field :numberOfBeds, :integer
+        field :price, :integer
         has_many :reservations , Booking.Reservation
     end
 
-    @required_fields ~w(type numberOfBeds)a
+    @required_fields ~w(type numberOfBeds price)a
 
     def changeset(room, params \\ %{}) do
         room
