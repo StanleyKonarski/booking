@@ -12,7 +12,7 @@ defmodule Booking.Reservation do
         timestamps()
     end
 
-    @required_fields ~w(endDate beginningDate room guest)a
+    @required_fields ~w(endDate beginningDate room_id guest_id)a
 
     def changeset(reservation, params \\ %{}) do
         reservation
@@ -24,6 +24,10 @@ defmodule Booking.Reservation do
     defp future(_, value) do
         DateTime.compare(value, DateTime.utc_now)
         |> get_error
+    end
+
+    defp is_taken do
+
     end
 
     #Returns :gt if the first datetime is later than the second and :lt for vice versa. If the two datetimes are equal :eq is returned.

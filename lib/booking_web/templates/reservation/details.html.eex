@@ -1,0 +1,1 @@
+<h1><%= date_format @reservation.beginningDate %></h1>

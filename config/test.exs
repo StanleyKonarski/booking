@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :booking, Booking.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "lelumpolelum",
   database: "booking_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

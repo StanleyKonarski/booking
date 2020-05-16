@@ -1,0 +1,15 @@
+<h1>All reservations</h1>
+<div class="list-group">
+    <%= for r <- @reservations do %>
+        <div class="list-group-item">
+            <a href="reservation/<%= r.id %>">
+                <h4 class="list-group-item-heading"><%= r.guest.surname %></h4>
+
+                <span>
+                    <span class="text-muted"> <%= r.guest.name %></span>
+                    <span class="pull-right"> <%= r.beginningDate %></span>
+                </span>
+            </a>
+        </div>
+    <% end %>
+</div>

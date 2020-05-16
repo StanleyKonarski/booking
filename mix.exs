@@ -44,7 +44,8 @@ defmodule Booking.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:ecto, "~> 3.4"},
-      {:timex, "~> 3.6"}
+      {:timex, "~> 3.6"},
+      {:pow, "~> 1.0"}
     ]
   end
 
