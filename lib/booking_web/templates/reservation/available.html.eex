@@ -1,3 +1,4 @@
+<div class="formal">
 <h1>All reservations</h1>
 <%= form_for @changeset, Routes.reservation_path(@conn, :addr), fn f -> %>
     <div class="form-group">
@@ -23,3 +24,4 @@
 
     <%= submit "Add", class: "btn btn-primary pull-left" %>
 <% end %>
+</div>

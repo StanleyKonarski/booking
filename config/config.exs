@@ -28,7 +28,8 @@ config :phoenix, :json_library, Jason
 
 config :booking, :pow,
   user: Booking.Users.User,
-  repo: Booking.Repo
+  repo: Booking.Repo,
+  web_module: BookingWeb
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -20,6 +20,8 @@
                         'Elixir.BookingWeb.LayoutView',
                         'Elixir.BookingWeb.PageController',
                         'Elixir.BookingWeb.PageView',
+                        'Elixir.BookingWeb.Pow.RegistrationView',
+                        'Elixir.BookingWeb.Pow.SessionView',
                         'Elixir.BookingWeb.ReservationController',
                         'Elixir.BookingWeb.ReservationView',
                         'Elixir.BookingWeb.Router',
