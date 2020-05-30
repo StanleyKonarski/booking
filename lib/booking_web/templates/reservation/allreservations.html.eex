@@ -1,13 +1,13 @@
 <h1>All reservations</h1>
 <div class="list-group">
     <%= for r <- @reservations do %>
-        <div class="list-group-item">
-            <a href="reservation/<%= r.id %>">
-                <h4 class="list-group-item-heading"><%= r.guest.surname %></h4>
+        <div class="formal">
+            <a href="<%= r.id %>">
+                <h3><%= r.room.type %></h3>
 
                 <span>
-                    <span class="text-muted"> <%= r.guest.name %></span>
-                    <span class="pull-right"> <%= r.beginningDate %></span>
+                    <span class="pull-right"> from <%= format_date r.beginning_date %></span>
+                    <span class="pull-right"> to <%= format_date r.end_date %></span>
                 </span>
             </a>
         </div>

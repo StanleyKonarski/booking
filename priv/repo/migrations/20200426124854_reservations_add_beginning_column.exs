@@ -3,7 +3,7 @@ defmodule Booking.Repo.Migrations.ReservationsAddBeginningColumn do
 
   def change do
     alter table("reservations") do
-      add :beginningDate, :utc_datetime
+      add :beginning_date, :utc_datetime
     end
 
   end

@@ -1,2 +1,10 @@
-<h1>Welcome to Booker !</h1>
-<button class="button button-outline">Outlined Button</button>
+<div class="formal">
+    <%= if Pow.Plug.current_user(@conn) do %>
+    <h1>Hi <%= @current_user.email %> !</h1>
+    <% else %>
+    <h1>Welcome to Booker !</h1>
+    <p>A site where you can book a hotel room <strong>suited to your needs</strong>.</p>
+    <% end %>
+    <p>Feel free to check out our selection of rooms and reserve them at anytime you want ! </p>
+    <%= button("Show me the rooms !", to: "/rooms", method: "get", class: "btn") %>
+</div>

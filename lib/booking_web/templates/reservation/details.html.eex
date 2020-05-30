@@ -1,1 +1,9 @@
-<h1><%= date_format @reservation.beginningDate %></h1>
+<div class="formal">
+    <h1><%= @reservation.user.surname <>" "<> @reservation.user.name %></h1>
+    <ul>
+        <li> Room type: <%= @reservation.room.type%></li>
+        <li> From: <%= format_date @reservation.beginning_date%> To: <%= format_date @reservation.end_date%></li>
+        <li> Price per night: <%= @reservation.room.price%>$</li>
+    </ul>
+    <%= button("Delete", to: Routes.reservation_path(@conn, :delete, @reservation), method: :delete, data: [confirm: "Are you sure?"], class: "button button-outline") %>
+</div>

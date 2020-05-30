@@ -1,0 +1,34 @@
+<h2>Register</h2>
+
+<%= form_for @changeset, @action, [as: :user], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :surname %>
+  <%= text_input f, :surname %>
+  <%= error_tag f, :surname %>
+
+  <%= label f, :date_of_birth %>
+  <%= text_input f, :date_of_birth, type: "date" %>
+  <%= error_tag f, :date_of_birth %>
+
+  <%= label f, :gender %>
+  <%= text_input f, :gender %>
+  <%= error_tag f, :gender %>
+
+  <div>
+    <%= submit "Submit" %>
+  </div>
+<% end %>
+

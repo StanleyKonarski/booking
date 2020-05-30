@@ -9,19 +9,25 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-Booking.GuestQueries.create(Booking.Guest.changeset(%Booking.Guest{}, %{name: "Jim", surname: "Halpert", dateOfBirth: "1978-10-01 00:00:00"}))
-Booking.GuestQueries.create(Booking.Guest.changeset(%Booking.Guest{}, %{name: "Michael", surname: "Scott", dateOfBirth: "1964-03-15 00:00:00"}))
-Booking.GuestQueries.create(Booking.Guest.changeset(%Booking.Guest{}, %{name: "Dwight", surname: "Schrute", dateOfBirth: "1970-11-11 00:00:00"}))
 
+{:ok, _user}=Booking.Users.User.create_user(%{
+  email: "admin@example.com",
+  password: "admin123",
+  confirm_password: "admin123",
+  is_admin: "true",
+  name: "Mike",
+  surname: "Wazowski",
+  date_of_birth: "1998-04-29",
+  gender: "Male"
+})
 
 Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Deluxe", numberOfBeds: 4, price: 500}))
-Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Premium", numberOfBeds: 3, price: 350}))
-Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Premium", numberOfBeds: 3, price: 350}))
-Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Standard", numberOfBeds: 2, price: 200}))
-Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Standard", numberOfBeds: 2, price: 200}))
-Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Standard", numberOfBeds: 2, price: 200}))
+Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Premium Plus", numberOfBeds: 3, price: 350}))
+Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Premium", numberOfBeds: 3, price: 300}))
 Booking.RoomQueries.create(Booking.Room.changeset(%Booking.Room{}, %{type: "Standard", numberOfBeds: 2, price: 200}))
 
-Booking.ReservationQueries.create(Booking.Reservation.changeset(%Booking.Reservation{}, %{beginningDate: "2021-04-01 00:00:00", endDate: "2021-05-07 00:00:00", room_id: 1, guest_id: 2}))
-Booking.ReservationQueries.create(Booking.Reservation.changeset(%Booking.Reservation{}, %{beginningDate: "2021-04-02 00:00:00", endDate: "2021-05-08 00:00:00", room_id: 4, guest_id: 3}))
-Booking.ReservationQueries.create(Booking.Reservation.changeset(%Booking.Reservation{}, %{beginningDate: "2021-04-01 00:00:00", endDate: "2021-05-04 00:00:00", room_id: 2, guest_id: 1}))
+Booking.ReservationQueries.create(Booking.Reservation.changeset(%Booking.Reservation{}, %{beginning_date: "2021-04-01 00:00:00", end_date: "2021-05-07 00:00:00", room_id: 1, user_id: 1}))
+Booking.ReservationQueries.create(Booking.Reservation.changeset(%Booking.Reservation{}, %{beginning_date: "2021-04-02 00:00:00", end_date: "2021-05-08 00:00:00", room_id: 4, user_id: 1}))
+Booking.ReservationQueries.create(Booking.Reservation.changeset(%Booking.Reservation{}, %{beginning_date: "2021-04-01 00:00:00", end_date: "2021-05-04 00:00:00", room_id: 2, user_id: 1}))
+
+

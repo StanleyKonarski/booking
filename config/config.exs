@@ -31,6 +31,15 @@ config :booking, :pow,
   repo: Booking.Repo,
   web_module: BookingWeb
 
+config :booking, :pow_assent,
+  providers: [
+    github: [
+      client_id: "142456b34b08439b72e2",
+      client_secret: "1763be77c7e39d377507990de520cdb0e493aa5e",
+      strategy: Assent.Strategy.Github
+    ]
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

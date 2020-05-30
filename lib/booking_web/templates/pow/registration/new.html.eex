@@ -19,6 +19,22 @@
   <%= password_input f, :password_confirmation %>
   <%= error_tag f, :password_confirmation %>
 
+  <%= label f, :name %>
+  <%= text_input f, :name, required: "required" %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :surname %>
+  <%= text_input f, :surname %>
+  <%= error_tag f, :surname %>
+
+  <%= label f, :date_of_birth %>
+  <%= text_input f, :date_of_birth, type: "date" %>
+  <%= error_tag f, :date_of_birth %>
+
+  <label>
+    Gender: <%= select f, :gender, ["Male","Female","Other"] %>
+  </label> 
+
   <div>
     <%= submit "Register" %>
   </div>
@@ -26,4 +42,8 @@
 
 
 <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
+<div>
+<%= for  link <- PowAssent.Phoenix.ViewHelpers.provider_links(@conn),
+do: content_tag(:span, link)%>
+</div>
 </div>

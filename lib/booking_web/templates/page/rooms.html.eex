@@ -1,0 +1,31 @@
+<div class="formal">
+    <h1>Room Deluxe</h1>
+    <ul>
+        <li>Rooms number: 1</li>
+        <li>Price per night: 500$</li>
+    </ul>
+    <p>This is our finest room, designed by the best and brightest architects in the world. It has 2 jaccuzis, 2 pool tables,
+        the sheets are made of silk ... Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, officiis! Voluptatibus non temporibus repellat laborum consequuntur voluptatem, voluptate sequi labore similique ipsa exercitationem totam nostrum incidunt, aspernatur corrupti, cum veniam!
+    </p>
+    <h1>Room Premium Plus</h1>
+    <ul>
+        <li>Rooms number: 2</li>
+        <li>Price per night: 350$</li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam totam temporibus porro sit quae molestias aut repellat alias natus, accusamus vero possimus deleniti consequuntur veniam quis fugiat nemo, nihil qui!</p>
+    <h1>Room Premium Plus</h1>
+    <ul>
+        <li>Rooms number: 3</li>
+        <li>Price per night: 300$</li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam totam temporibus porro sit quae molestias aut repellat alias natus, accusamus vero possimus deleniti consequuntur veniam quis fugiat nemo, nihil qui!</p>
+    <h1>Room Standard</h1>
+    <ul>
+        <li>Rooms number: 4</li>
+        <li>Price per night: 200$</li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam totam temporibus porro sit quae molestias aut repellat alias natus, accusamus vero possimus deleniti consequuntur veniam quis fugiat nemo, nihil qui!</p>
+</div>
+</div>
+
+

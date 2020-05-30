@@ -3,9 +3,9 @@ defmodule Booking.Repo.Migrations.CreateReservations do
 
   def change do
     create table(:reservations) do
-      add :endDate, :utc_datetime
+      add :end_date, :utc_datetime
       add :room_id, references(:rooms)
-      
+
       timestamps()
     end
   end

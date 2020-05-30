@@ -7,34 +7,46 @@ defmodule BookingWeb.ReservationController do
     render(conn, "details.html", reservation: reservation)
   end
 
+  def delete(conn, %{"id" => id}) do
+    reservation = Booking.ReservationQueries.get_by_id(id)
+    {:ok, _room} = Booking.ReservationQueries.delete_reservation(reservation)
+
+    conn
+    |> put_flash(:info, "Reservation deleted successfully.")
+    |> redirect(to: Routes.page_path(conn, :index))
+  end
+
   def list(conn, _params) do
-    reservations = Booking.ReservationQueries.get_all_guest_preload
-    render conn, "allreservations.html", reservations: reservations
+    user = Pow.Plug.current_user(conn)
+    if user.is_admin do
+      reservations = Booking.ReservationQueries.get_all_guest_preload
+      render conn, "allreservations.html", reservations: reservations
+    else
+      reservations = Booking.ReservationQueries.get_all_for_current_user(user.id)
+      render conn, "allreservations.html", reservations: reservations
+    end
+  end
+  def make_reservation(conn, %{errors: errors}) do
+    render conn, "add_reservation.html", changeset: errors
   end
 
-  def create(conn, _params) do
-    changeset = Booking.Guest.changeset(%Booking.Guest{}, %{})
-    render conn, "create.html", changeset: changeset
+  def make_reservation(conn, _params) do
+    changeset = Booking.Reservation.changeset(%Booking.Reservation{}, %{})
+    render conn, "add_reservation.html", changeset: changeset
   end
 
-  def available(conn, %{"id" => id}) do
-    changeset = Booking.Reservation.changeset(%Booking.Reservation{}, %{id: id})
-    render conn, "available.html", changeset: changeset, id: id
-  end
+  def add(conn, %{"reservation" => reservation}) do
+    user = Pow.Plug.current_user(conn)
+    user_id = user.id
+    reservation = Map.update!(reservation, "beginning_date", fn d -> d <> " 00:00:00" end)
+    reservation = Map.update!(reservation, "end_date", fn d -> d <> " 00:00:00" end)
+    reservation = Map.put(reservation, "user_id", user_id)
 
-  def addr(conn, %{"reservation" => reservation}) do
-    reservation = Map.update!(reservation, "beginningDate", fn d -> d <> ":00" end)
-    reservation = Map.update!(reservation, "endDate", fn d -> d <> ":00" end)
-    Booking.Reservation.changeset(%Booking.Reservation{}, reservation)
-    |> Booking.ReservationQueries.create
-    redirect conn, to: Routes.reservation_path(conn, :list)
-  end
+    changeset=Booking.Reservation.changeset(%Booking.Reservation{}, reservation)
 
-  def add(conn, %{"guest" => guest}) do
-    guest = Map.update!(guest, "dateOfBirth", fn d -> d <> ":00" end)
-
-    %{id: id} = Booking.Guest.changeset(%Booking.Guest{}, guest)
-    |> Booking.GuestQueries.create
-    redirect conn, to: Routes.reservation_path(conn, :available, id: id)
+    case Booking.ReservationQueries.create changeset do
+      {:ok,_} -> redirect conn, to: Routes.reservation_path(conn, :list)
+      {:error, reasons} -> make_reservation conn, %{errors: reasons}
+    end
   end
 end

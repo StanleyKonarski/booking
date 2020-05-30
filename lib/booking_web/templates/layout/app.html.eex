@@ -12,9 +12,9 @@
   <body>
     <nav class="navigation">
       <ul class="navigation_list">
-        <li class="navigation_item"><a href="/">Home</a></li>
-        <li class="navigation_item"><a href="#">Rooms</a></li>
-        <li class="navigation_item" id="booker_logo">Booker</li>
+        <li class="navigation_item"><a href="/reservation/all">Bookings</a></li>
+        <li class="navigation_item"><a href="/rooms">Rooms</a></li>
+        <li class="navigation_item" id="booker_logo"><a href="/">Booker</a></li>
         <li class="navigation_item"><a href="/reservation/new">Reservation</a></li>
         <%= if Pow.Plug.current_user(@conn) do %>
         <li class="navigation_item">

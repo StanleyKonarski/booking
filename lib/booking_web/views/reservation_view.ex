@@ -1,7 +1,8 @@
 defmodule BookingWeb.ReservationView do
   use BookingWeb, :view
+  use Timex
 
-  def date_format(dt) do
-    DateTime.to_date(dt)
+  def format_date(date) do
+    Timex.format!(date, "{D}-{0M}-{YYYY}")
   end
 end
