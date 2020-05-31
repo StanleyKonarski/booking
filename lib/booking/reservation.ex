@@ -26,6 +26,7 @@ defmodule Booking.Reservation do
             message: "end date must be after beginning of the reservation"
         )
         |> validate_change(:end_date, &future/2)
+        |> validate_change(:beginning_date, &future/2)
         #|> validate_if_room_is_taken()
 
     end
