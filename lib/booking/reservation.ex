@@ -3,7 +3,6 @@ defmodule Booking.Reservation do
     use Timex
 
     import Ecto.Changeset
-    import Ecto.Query
 
     schema "reservations" do
         field :end_date, :utc_datetime
@@ -27,7 +26,6 @@ defmodule Booking.Reservation do
         )
         |> validate_change(:end_date, &future/2)
         |> validate_change(:beginning_date, &future/2)
-        #|> validate_if_room_is_taken()
 
     end
 
@@ -50,6 +48,6 @@ defmodule Booking.Reservation do
 
     #Returns :gt if the first datetime is later than the second and :lt for vice versa. If the two datetimes are equal :eq is returned.
 
-    defp get_error(comparison) when comparison == :lt, do: [end_date: "Please choose date in the future"]
+    defp get_error(comparison) when comparison == :lt, do: [end_date: "Beginning and the end of your reservation must be in the future"]
     defp get_error(_), do: []
 end
