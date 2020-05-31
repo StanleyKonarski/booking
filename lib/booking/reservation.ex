@@ -43,10 +43,6 @@ defmodule Booking.Reservation do
         #for r<- reservations do
            # if(Timex.between?(beginning, r.beginning_date, r.end_date)) do
 
-            #end
-            #if(Timex.between?(ending, r.beginning_date, r.end_date)) do
-
-            #end
         #changeset
         #end
     #end
