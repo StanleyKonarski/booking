@@ -14,7 +14,7 @@
   email: "admin@example.com",
   password: "admin123",
   confirm_password: "admin123",
-  is_admin: "true",
+  is_admin: true,
   name: "Mike",
   surname: "Wazowski",
   date_of_birth: "1998-04-29",

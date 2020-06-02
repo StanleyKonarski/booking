@@ -19,11 +19,12 @@ defmodule Booking.Users.User do
   end
 
   @required_fields ~w(name surname date_of_birth gender)a
+  @optional_fields ~w(is_admin)a
 
   def changeset(user_or_changeset, attrs) do
     user_or_changeset
     |> pow_changeset(attrs)
-    |> Ecto.Changeset.cast(attrs, @required_fields)
+    |> Ecto.Changeset.cast(attrs, @required_fields ++ @optional_fields)
     |> Ecto.Changeset.validate_required(@required_fields)
     |> Ecto.Changeset.validate_change(:date_of_birth, &eighteen_years_old/2)
   end
